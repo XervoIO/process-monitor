@@ -1,0 +1,11 @@
+{
+  "description": "",
+  "version": "0.0.1",
+  "dependencies": {
+    "string" : "*",
+  },
+  "main" : "./lib/process-monitor.js",
+  "name": "process-monitor",
+  "author": "Modulus",
+  "homepage": "http://modulus.io"
+}
