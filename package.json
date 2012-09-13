@@ -1,11 +1,43 @@
 {
-  "description": "",
-  "version": "0.0.1",
-  "dependencies": {
-    "string" : "*",
-  },
-  "main" : "./lib/process-monitor.js",
   "name": "process-monitor",
-  "author": "Modulus",
-  "homepage": "http://modulus.io"
+  "description": "Monitors the CPU and memory usage for a PID or collection of PIDs.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/onmodulus/process-monitor",
+  "author": {
+    "name": "Modulus",
+    "email": "support@modulus.io",
+    "url": "http://modulus.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/onmodulus/process-monitor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/onmodulus/process-monitor/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/onmodulus/process-monitor/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/process-monitor",
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "string" : "*"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.15"
+  },
+  "keywords": [],
+  "docco_husky": {
+    "output_dir": "docs",
+    "project_name": "Process-Monitor",
+    "show_timestamp": false
+  }
 }
