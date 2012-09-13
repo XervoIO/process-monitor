@@ -20,14 +20,33 @@ var procmon = require('../lib/process-monitor.js');
     test.ifError(value)
 */
 
-exports['process-monitor-test'] = {
+exports['process-monitor'] = {
   setUp: function(done) {
     done();
   },
-  'no args': function(test) {
-    test.expect(1);
+  'initialization': function(test) {
+    test.expect(2);
 
     test.ok(procmon, 'should be available.');
+    test.ok(procmon.monitor({ pid: process.id }), 'should initialize.');
+
+    test.done();
+  },
+  'chaining': function(test) {
+    test.expect(1);
+
+    test.strictEqual(procmon, procmon.monitor({ pid: process.id }), 'should be chainable from monitor.');
+
+    test.done();
+  },
+  'starting and stopping': function(test) {
+    test.expect(2);
+    procmon.monitor({ pid: process.id }).start();
+
+    test.strictEqual(procmon.isRunning, true, 'should start');
+    procmon.stop();
+    test.strictEqual(procmon.isRunning, false, 'should stop');
+
     test.done();
   }
 };
