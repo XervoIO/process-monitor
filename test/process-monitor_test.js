@@ -22,12 +22,11 @@ var procmon = require('../lib/process-monitor.js');
 
 exports['process-monitor-test'] = {
   setUp: function(done) {
-    // setup here
     done();
   },
   'no args': function(test) {
     test.expect(1);
-    // tests here
+
     test.ok(procmon, 'should be available.');
     test.done();
   }
