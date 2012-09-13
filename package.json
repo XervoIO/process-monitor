@@ -32,7 +32,8 @@
     "string" : "*"
   },
   "devDependencies": {
-    "grunt": "~0.3.15"
+    "grunt": "~0.3.15",
+    "docco-husky": "~0.3.3"
   },
   "keywords": [],
   "docco_husky": {
