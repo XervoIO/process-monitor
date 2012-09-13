@@ -12,7 +12,8 @@ Javascript                       1             10             18             56
 
 <h2>Getting Started</h2>
 
-<p>Install the module with: <code>npm install process-monitor</code></p>
+<p><em>(note: this module is not currently available in the npm registry)</em>
+Install the module with: <code>npm install process-monitor</code></p>
 
 <pre><code>var procmon = require('process-monitor');
 procmon.monitor({ pid: process.id }).start();
@@ -20,7 +21,8 @@ procmon.monitor({ pid: process.id }).start();
 
 <h2>Documentation</h2>
 
-<p><em>(Coming soon)</em></p>
+<p>Generated code documentation is available in the docs directory. This documentation is generated using
+<code>docco-husky</code> - to regenerate the documentation, run <code>$ docco-husky lib/*</code>.</p>
 
 <h2>Examples</h2>
 
@@ -30,10 +32,6 @@ procmon.on('stats', function(stats) {
   console.log(stats);
 });
 </code></pre>
-
-<h2>Contributing</h2>
-
-<p>In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using <a href="https://github.com/cowboy/grunt">grunt</a>.</p>
 
 <h2>Release History</h2>
 
