@@ -18,7 +18,7 @@ Generated code documentation is available in the docs directory. This documentat
     var procmon = require('./process-monitor').monitor({ pid: process.pid }).start();
 
     procmon.on('stats', function(stats) {
-      console.log(stats);
+      console.dir(stats);
     });
 
 ## Release History

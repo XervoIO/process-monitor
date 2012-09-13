@@ -28,20 +28,22 @@ exports['process-monitor'] = {
     test.expect(2);
 
     test.ok(procmon, 'should be available.');
-    test.ok(procmon.monitor({ pid: process.id }), 'should initialize.');
+    test.ok(procmon.monitor({ pid: 0 }), 'should initialize with single pid.');
 
     test.done();
   },
   'chaining': function(test) {
-    test.expect(1);
+    test.expect(3);
 
-    test.strictEqual(procmon, procmon.monitor({ pid: process.id }), 'should be chainable from monitor.');
+    test.strictEqual(procmon, procmon.monitor({ pid: 0 }), 'should be chainable from monitor.');
+    test.strictEqual(procmon, procmon.monitor({ pid: 0 }).start(), 'should be chainable from start.');
+    test.strictEqual(procmon, procmon.monitor({ pid: 0 }).stop(), 'should be chainable from stop.');
 
     test.done();
   },
   'starting and stopping': function(test) {
     test.expect(2);
-    procmon.monitor({ pid: process.id }).start();
+    procmon.monitor({ pid: 0 }).start();
 
     test.strictEqual(procmon.isRunning, true, 'should start');
     procmon.stop();

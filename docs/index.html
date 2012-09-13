@@ -1,10 +1,10 @@
 <!DOCTYPE html><html><head><title>README</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="./docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="./index.html" class="source"><span class="file_name">README</span></a><a href="./lib/process-monitor.js.html" class="source "><span class="base_path">lib / </span><span class="file_name">process-monitor.js</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"></th><th class="code"></th></tr></thead><tbody><tr id="section"><td class="docs"><h1><a href="https://github.com/onmodulus/process-monitor">process-monitor
 </a></h1><p>Monitors the CPU and memory usage for a PID or collection of PIDs.</p><h3>Version</h3><p>0.0.1</p><h3>Author</h3><p><span class="gravatar"><img src="http://www.gravatar.com/avatar/e382905ab2b34219ea5ec5ca6e18fe79"/><span>Modulus&lt;support@modulus.io&gt;</span></span></p><h3>Repository</h3><p>git - git://github.com/onmodulus/process-monitor.git</p><h3>Dependencies </h3><ul><li><b>string </b><span>*</span></li></ul><p><h3>Stats</h3><pre class="code_stats">
-http://cloc.sourceforge.net v 1.55  T=0.5 s (2.0 files/s, 318.0 lines/s)
+http://cloc.sourceforge.net v 1.55  T=0.5 s (2.0 files/s, 338.0 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-Javascript                       1             24             76             59
+Javascript                       1             28             81             60
 -------------------------------------------------------------------------------
 </pre></p></td><td id="content" class="code"><h1>process-monitor</h1>
 
@@ -29,7 +29,7 @@ procmon.monitor({ pid: process.id }).start();
 <pre><code>var procmon = require('./process-monitor').monitor({ pid: process.pid }).start();
 
 procmon.on('stats', function(stats) {
-  console.log(stats);
+  console.dir(stats);
 });
 </code></pre>
 
