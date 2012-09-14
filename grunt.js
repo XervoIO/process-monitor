@@ -1,6 +1,5 @@
 module.exports = function(grunt) {
 
-  // Project configuration.
   grunt.initConfig({
     pkg: '<json:package.json>',
     test: {
@@ -34,7 +33,7 @@ module.exports = function(grunt) {
     }
   });
 
-  // Default task.
   grunt.registerTask('default', 'lint test');
+  grunt.registerTask('travis', 'lint test');
 
 };

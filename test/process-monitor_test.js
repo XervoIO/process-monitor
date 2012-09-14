@@ -22,23 +22,24 @@ var procmon = require('../lib/process-monitor.js');
 
 exports['process-monitor'] = {
   setUp: function(done) {
-    this.testMon = procmon.monitor({ pid: process.id });
     done();
   },
   'initialization': function(test) {
-    test.expect(1);
+    test.expect(2);
 
-    test.ok(this.testMon, 'should be available.');
+    test.ok(procmon.monitor({ pid: 0 }), 'should initialize with a single PID.');
+    test.ok(procmon.monitor({ pid: [0, 1] }), 'should initialize with an array of PIDs.');
 
     test.done();
   },
   'starting and stopping': function(test) {
     test.expect(2);
+    var testMon = procmon.monitor({ pid: 0 });
 
-    this.testMon.start();
-    test.strictEqual(this.testMon.isRunning, true, 'should start');
-    this.testMon.stop();
-    test.strictEqual(this.testMon.isRunning, false, 'should stop');
+    testMon.start();
+    test.strictEqual(testMon.isRunning, true, 'should start.');
+    testMon.stop();
+    test.strictEqual(testMon.isRunning, false, 'should stop.');
 
     test.done();
   }
