@@ -19,7 +19,7 @@ Monitor a single PID or mulitple PIDs:
     var single = procmon.monitor({ pid: 1, interval: 5000 }).start();
 
     // Multiple PIDs
-    var multi = procmon.monitor({ pids: [1, 2, 3] }).start();
+    var multi = procmon.monitor({ pid: [1, 2, 3] }).start();
 
 Handle the `stats` response - a response will emitted for each of the specified PIDs and includes the PID:
 
@@ -35,9 +35,8 @@ Generated code documentation is available in the docs directory. This documentat
 
 Currently the `monitor` function accepts the following configuration options:
 
-* `pid` - Single process ID to monitor
-* `pids` - An array of PIDs to monitor
-* `interval` - Rate at which the `stats` the process is checked and the stats even is emitted
+* `pid` - Either a PID number or an array of PID numbers
+* `interval` - Rate in milliseconds at which the processes are checked and the stats event is emitted (defaults to 1000 ms)
 
 ## Release History
 * 2012/09/14 - v0.1.0 - Initial release.

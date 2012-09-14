@@ -28,7 +28,7 @@ exports['process-monitor'] = {
     test.expect(2);
 
     test.ok(procmon.monitor({ pid: 0 }), 'should initialize with a single PID.');
-    test.ok(procmon.monitor({ pids: [0, 1] }), 'should initialize with an array of PIDs.');
+    test.ok(procmon.monitor({ pid: [0, 1] }), 'should initialize with an array of PIDs.');
 
     test.done();
   },
