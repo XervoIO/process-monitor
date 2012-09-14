@@ -4,7 +4,12 @@ Monitors the CPU and memory usage for a PID or collection of PIDs.
 
 ## Getting Started
 _(note: this module is not currently available in the npm registry)_
-Install the module with: `npm install process-monitor`
+
+Install the module:
+
+    npm install git://github.com/onmodulus/process-monitor.git#develop
+
+Use it in your script:
 
     var procmon = require('process-monitor');
     procmon.monitor({ pid: process.id }).start();
@@ -22,7 +27,7 @@ Generated code documentation is available in the docs directory. This documentat
     });
 
 ## Release History
-_(Nothing yet)_
+* 2012/09/14 - v0.1.0 - Initial release.
 
 ## License
 Copyright (c) 2012 Modulus
