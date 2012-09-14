@@ -1,10 +1,10 @@
 <!DOCTYPE html><html><head><title>README</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="./docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="./index.html" class="source"><span class="file_name">README</span></a><a href="./lib/process-monitor.js.html" class="source "><span class="base_path">lib / </span><span class="file_name">process-monitor.js</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"></th><th class="code"></th></tr></thead><tbody><tr id="section"><td class="docs"><h1><a href="https://github.com/onmodulus/process-monitor">process-monitor
 </a></h1><p>Monitors the CPU and memory usage for a PID or collection of PIDs.</p><h3>Version</h3><p>0.1.0</p><h3>Author</h3><p><span class="gravatar"><img src="http://www.gravatar.com/avatar/e382905ab2b34219ea5ec5ca6e18fe79"/><span>Modulus &lt;support@modulus.io&gt;</span></span></p><h3>Contributors</h3><p><span class="gravatar"><img src="http://www.gravatar.com/avatar/aab639e3bbc03775ccd128a473813a96"/><span>Brandon Cannaday&lt;brandon@modulus.io&gt;</span></span></p><p><span class="gravatar"><img src="http://www.gravatar.com/avatar/1a1ecb880527b1fccad00224317c5cc6"/><span>Matt Hernandez&lt;matt@eventargs.com&gt;</span></span></p><h3>Repository</h3><p>git - git://github.com/onmodulus/process-monitor.git</p><h3>Dependencies </h3><ul><li><b>string </b><span>0.2.x</span></li></ul><p><h3>Stats</h3><pre class="code_stats">
-http://cloc.sourceforge.net v 1.55  T=0.5 s (2.0 files/s, 338.0 lines/s)
+http://cloc.sourceforge.net v 1.55  T=0.5 s (2.0 files/s, 308.0 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-Javascript                       1             28             81             60
+Javascript                       1             24             78             52
 -------------------------------------------------------------------------------
 </pre></p></td><td id="content" class="code"><h1>process-monitor</h1>
 
@@ -22,7 +22,6 @@ Javascript                       1             28             81             60
 <p>Use it in your script:</p>
 
 <pre><code>var procmon = require('process-monitor');
-procmon.monitor({ pid: process.id }).start();
 </code></pre>
 
 <h2>Documentation</h2>
@@ -32,12 +31,20 @@ procmon.monitor({ pid: process.id }).start();
 
 <h2>Examples</h2>
 
-<pre><code>var procmon = require('./process-monitor').monitor({ pid: process.pid }).start();
+<pre><code>var procmon = require('./process-monitor');
+var process = procmon.monitor({ pid: process.pid }).start();
 
-procmon.on('stats', function(stats) {
+process.on('stats', function(stats) {
   console.dir(stats);
 });
 </code></pre>
+
+<p>Currently the <code>monitor</code> function accepts the following configuration options:</p>
+
+<ul>
+<li><code>pid</code> - The process ID to monitor</li>
+<li><code>interval</code> - The rate at which fire the <code>stats</code> event.</li>
+</ul>
 
 <h2>Release History</h2>
 

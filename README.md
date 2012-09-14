@@ -12,7 +12,6 @@ Install the module:
 Use it in your script:
 
     var procmon = require('process-monitor');
-    procmon.monitor({ pid: process.id }).start();
 
 ## Documentation
 Generated code documentation is available in the docs directory. This documentation is generated using
@@ -20,11 +19,17 @@ Generated code documentation is available in the docs directory. This documentat
 
 ## Examples
 
-    var procmon = require('./process-monitor').monitor({ pid: process.pid }).start();
+    var procmon = require('./process-monitor');
+    var process = procmon.monitor({ pid: process.pid }).start();
 
-    procmon.on('stats', function(stats) {
+    process.on('stats', function(stats) {
       console.dir(stats);
     });
+
+Currently the `monitor` function accepts the following configuration options:
+
+* `pid` - The process ID to monitor
+* `interval` - The rate at which fire the `stats` event.
 
 ## Release History
 * 2012/09/14 - v0.1.0 - Initial release.
