@@ -32,7 +32,7 @@
     "node": ">= 0.6.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt travis --verbose"
   },
   "dependencies": {
     "string" : "0.2.x"
