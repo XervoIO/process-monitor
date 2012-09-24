@@ -5,11 +5,10 @@
 Monitors the CPU and memory usage for a PID or collection of PIDs.
 
 ## Getting Started
-_(note: this module is not currently available in the npm registry)_
 
 Install the module:
 
-    npm install git://github.com/onmodulus/process-monitor.git#develop
+    npm install process-monitor
 
 Use it in your script:
 
