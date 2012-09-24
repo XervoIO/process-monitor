@@ -40,6 +40,7 @@ Currently the `monitor` function accepts the following configuration options:
 * `interval` - Rate in milliseconds at which the processes are checked and the stats event is emitted (defaults to 1000 ms)
 
 ## Release History
+* 2012/09/24 - v0.1.1 - Documentation update for publishing to npm.
 * 2012/09/14 - v0.1.0 - Initial release.
 
 ## License
