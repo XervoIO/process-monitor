@@ -25,16 +25,19 @@ exports['process-monitor'] = {
     done();
   },
   'initialization': function(test) {
-    test.expect(2);
+    test.expect(3);
 
-    test.ok(procmon.monitor({ pid: 0 }), 'should initialize with a single PID.');
-    test.ok(procmon.monitor({ pid: [0, 1] }), 'should initialize with an array of PIDs.');
+    test.ok(procmon.monitor({ pid: 1 }), 'should initialize with a single PID.');
+    test.ok(procmon.monitor({ pid: [ 1, 2 ] }), 'should initialize with an array of PIDs.');
+    test.throws(function() {
+      procmon.monitor();
+    }, TypeError, 'should throw type error with no initialization object');
 
     test.done();
   },
   'starting and stopping': function(test) {
     test.expect(2);
-    var testMon = procmon.monitor({ pid: 0 });
+    var testMon = procmon.monitor({ pid: 1 });
 
     testMon.start();
     test.strictEqual(testMon.isRunning, true, 'should start.');
@@ -42,5 +45,18 @@ exports['process-monitor'] = {
     test.strictEqual(testMon.isRunning, false, 'should stop.');
 
     test.done();
+  },
+  'stats event': function(test) {
+    var testMon = procmon.monitor({ pid: 1, interval: 10 }).start();
+
+    testMon.on('stats', function(stats) {
+      test.expect(3);
+
+      test.ok(stats, 'stats event should be called and provide stats object');
+      test.ok(stats.cpu, 'stats object should have cpu property');
+      test.ok(stats.mem, 'stats object should have mem property');
+
+      test.done();
+    });
   }
 };

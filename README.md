@@ -1,13 +1,14 @@
 # process-monitor
 
+[![Build Status](https://secure.travis-ci.org/fiveisprime/process-monitor.png)](http://travis-ci.org/fiveisprime/process-monitor)
+
 Monitors the CPU and memory usage for a PID or collection of PIDs.
 
 ## Getting Started
-_(note: this module is not currently available in the npm registry)_
 
 Install the module:
 
-    npm install git://github.com/onmodulus/process-monitor.git#develop
+    npm install process-monitor
 
 Use it in your script:
 
@@ -39,6 +40,7 @@ Currently the `monitor` function accepts the following configuration options:
 * `interval` - Rate in milliseconds at which the processes are checked and the stats event is emitted (defaults to 1000 ms)
 
 ## Release History
+* 2012/09/24 - v0.1.1 - Documentation update for publishing to npm.
 * 2012/09/14 - v0.1.0 - Initial release.
 
 ## License
