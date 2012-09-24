@@ -1,5 +1,7 @@
 # process-monitor
 
+[![Build Status](https://secure.travis-ci.org/fiveisprime/process-monitor.png)](http://travis-ci.org/fiveisprime/process-monitor)
+
 Monitors the CPU and memory usage for a PID or collection of PIDs.
 
 ## Getting Started
