@@ -47,7 +47,7 @@ exports['process-monitor'] = {
     test.done();
   },
   'stats event': function(test) {
-    var testMon = procmon.monitor({ pid: 0, interval: 10, format: '{cpu}% CPU - {mem} MEM' }).start();
+    var testMon = procmon.monitor({ pid: process.pid, interval: 10, format: '{cpu}% CPU - {mem} MEM' }).start();
 
     testMon.on('stats', function(stats) {
       test.expect(4);
