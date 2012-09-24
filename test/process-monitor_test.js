@@ -47,14 +47,15 @@ exports['process-monitor'] = {
     test.done();
   },
   'stats event': function(test) {
-    var testMon = procmon.monitor({ pid: 1, interval: 10 }).start();
+    var testMon = procmon.monitor({ pid: 0, interval: 10, format: '{cpu}% CPU - {mem} MEM' }).start();
 
     testMon.on('stats', function(stats) {
-      test.expect(3);
+      test.expect(4);
 
       test.ok(stats, 'stats event should be called and provide stats object');
       test.ok(stats.cpu, 'stats object should have cpu property');
       test.ok(stats.mem, 'stats object should have mem property');
+      test.ok(stats.out, 'should output formatted string results');
 
       test.done();
     });
