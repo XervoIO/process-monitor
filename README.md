@@ -31,7 +31,7 @@ Handle the `stats` response - a response will emitted for each of the specified 
 _Note: if a PID is not found, the resulting cpu and mem properties will be 0.0 for `cpu` and 0 for `mem`._
 
 ## Documentation
-Generated code documentation is available in the docs directory. This documentation is generated using
+Generated code documentation is available [here](http://eventargs.com/docs/process-monitor/) and in the docs directory. This documentation is generated using
 `docco-husky` - to regenerate the documentation, run `$ docco-husky lib/*`.
 
 Currently the `monitor` function accepts the following configuration options:
