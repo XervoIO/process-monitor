@@ -33,14 +33,14 @@ var single = procmon.monitor({ pid: 1, interval: 5000 }).start();
 var multi = procmon.monitor({ pid: [1, 2, 3] }).start();
 </code></pre>
 
-<p>Handle the <code>stats</code> response - a response will emitted for each of the specified PIDs and includes the PID:</p>
+<p>Handle the <code>stats</code> response - an event will be emitted for each of the specified PIDs and includes the PID:</p>
 
 <pre><code>single.on('stats', function(stats) {
   console.dir(stats); // Outputs: { pid: 1, cpu: '0.0', mem: '2248', out: '' }
 })
 </code></pre>
 
-<p><em>Note: if a PID is not found, the resulting cpu and mem properties will be 0.0 for <code>cpu</code> and 0 for <code>mem</code>.</em></p>
+<p><em>Note: if a PID is not found, the resulting cpu and mem properties will be 0.0 and 0 respectively.</em></p>
 
 <h2>Documentation</h2>
 
@@ -82,6 +82,7 @@ procmon.on('stats', function(stats) {
 <h2>Release History</h2>
 
 <ul>
+<li>2012/09/26 - v0.2.0 - Added <code>format</code> to the configuration object which accepts a format for the output (the <code>out</code> property of the <code>stats</code> object). Uses <a href="https://npmjs.org/package/stringformat">stringformat</a> which allows the use of <code>{cpu}</code>, <code>{mem}</code>, and <code>{pid}</code> in the format string.</li>
 <li>2012/09/24 - v0.1.1 - Documentation update for publishing to npm.</li>
 <li>2012/09/14 - v0.1.0 - Initial release.</li>
 </ul>

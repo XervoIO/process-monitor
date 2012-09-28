@@ -22,13 +22,13 @@ Monitor a single PID or multiple PIDs:
     // Multiple PIDs
     var multi = procmon.monitor({ pid: [1, 2, 3] }).start();
 
-Handle the `stats` response - a response will emitted for each of the specified PIDs and includes the PID:
+Handle the `stats` response - an event will be emitted for each of the specified PIDs and includes the PID:
 
     single.on('stats', function(stats) {
       console.dir(stats); // Outputs: { pid: 1, cpu: '0.0', mem: '2248', out: '' }
     })
 
-_Note: if a PID is not found, the resulting cpu and mem properties will be 0.0 for `cpu` and 0 for `mem`._
+_Note: if a PID is not found, the resulting cpu and mem properties will be 0.0 and 0 respectively._
 
 ## Documentation
 Generated code documentation is available [here](http://eventargs.com/docs/process-monitor/) and in the docs directory. This documentation is generated using
@@ -64,6 +64,7 @@ Specify a format string that will be updated in the `stats` object on update. Us
     });
 
 ## Release History
+* 2012/09/26 - v0.2.0 - Added `format` to the configuration object which accepts a format for the output (the `out` property of the `stats` object). Uses [stringformat](https://npmjs.org/package/stringformat) which allows the use of `{cpu}`, `{mem}`, and `{pid}` in the format string.
 * 2012/09/24 - v0.1.1 - Documentation update for publishing to npm.
 * 2012/09/14 - v0.1.0 - Initial release.
 
