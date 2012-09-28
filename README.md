@@ -64,7 +64,7 @@ Specify a format string that will be updated in the `stats` object on update. Us
     });
 
 ## Release History
-* 2012/09/26 - v0.2.0 - Added `format` to the configuration object which accepts a format for the output (the `out` property of the `stats` object). Uses [stringformat](https://npmjs.org/package/stringformat) which allows the use of `{cpu}`, `{mem}`, and `{pid}` in the format string.
+* 2012/09/28 - v0.2.0 - Added `format` to the configuration object which accepts a format for the output (the `out` property of the `stats` object). Uses [stringformat](https://npmjs.org/package/stringformat) which allows the use of `{cpu}`, `{mem}`, and `{pid}` in the format string.
 * 2012/09/24 - v0.1.1 - Documentation update for publishing to npm.
 * 2012/09/14 - v0.1.0 - Initial release.
 
