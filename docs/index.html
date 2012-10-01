@@ -1,16 +1,16 @@
 <!DOCTYPE html><html><head><title>README</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="./docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="./index.html" class="source"><span class="file_name">README</span></a><a href="./lib/process-monitor.js.html" class="source "><span class="base_path">lib / </span><span class="file_name">process-monitor.js</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"></th><th class="code"></th></tr></thead><tbody><tr id="section"><td class="docs"><h1><a href="https://github.com/onmodulus/process-monitor">process-monitor
-</a></h1><p>Monitors the CPU and memory usage for a PID or collection of PIDs.</p><h3>Version</h3><p>0.1.0</p><h3>Author</h3><p><span class="gravatar"><img src="http://www.gravatar.com/avatar/e382905ab2b34219ea5ec5ca6e18fe79"/><span>Modulus &lt;support@modulus.io&gt;</span></span></p><h3>Contributors</h3><p><span class="gravatar"><img src="http://www.gravatar.com/avatar/aab639e3bbc03775ccd128a473813a96"/><span>Brandon Cannaday&lt;brandon@modulus.io&gt;</span></span></p><p><span class="gravatar"><img src="http://www.gravatar.com/avatar/1a1ecb880527b1fccad00224317c5cc6"/><span>Matt Hernandez&lt;matt@eventargs.com&gt;</span></span></p><h3>Repository</h3><p>git - git://github.com/onmodulus/process-monitor.git</p><h3>Dependencies </h3><ul><li><b>string </b><span>0.2.x</span></li></ul><p><h3>Stats</h3><pre class="code_stats">
-http://cloc.sourceforge.net v 1.55  T=0.5 s (2.0 files/s, 336.0 lines/s)
+</a></h1><p>Monitors the CPU and memory usage for a PID or collection of PIDs.</p><h3>Version</h3><p>0.2.0</p><h3>Author</h3><p><span class="gravatar"><img src="http://www.gravatar.com/avatar/e382905ab2b34219ea5ec5ca6e18fe79"/><span>Modulus &lt;support@modulus.io&gt;</span></span></p><h3>Contributors</h3><p><span class="gravatar"><img src="http://www.gravatar.com/avatar/aab639e3bbc03775ccd128a473813a96"/><span>Brandon Cannaday&lt;brandon@modulus.io&gt;</span></span></p><p><span class="gravatar"><img src="http://www.gravatar.com/avatar/1a1ecb880527b1fccad00224317c5cc6"/><span>Matt Hernandez&lt;matt@eventargs.com&gt;</span></span></p><h3>Repository</h3><p>git - git://github.com/onmodulus/process-monitor.git</p><h3>Dependencies </h3><ul><li><b>string </b><span>0.2.x</span></li><li><b>stringformat </b><span>0.0.5</span></li></ul><p><h3>Stats</h3><pre class="code_stats">
+http://cloc.sourceforge.net v 1.55  T=0.5 s (2.0 files/s, 380.0 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-Javascript                       1             28             77             63
+Javascript                       1             43             81             66
 -------------------------------------------------------------------------------
 </pre></p></td><td id="content" class="code"><h1>process-monitor</h1>
 
 <p><a href="http://travis-ci.org/fiveisprime/process-monitor"><img src="https://secure.travis-ci.org/fiveisprime/process-monitor.png" alt="Build Status" title="" /></a></p>
 
-<p>Monitors the CPU and memory usage for a PID or collection of PIDs.</p>
+<p>Monitors the CPU and memory usage for a PID or collection of PIDs asynchronously and emits an event with a stats object which includes information about the specified PID. Allows a user-specified format string for creating a friendly status message.</p>
 
 <h2>Getting Started</h2>
 
@@ -24,7 +24,7 @@ Javascript                       1             28             77             63
 <pre><code>var procmon = require('process-monitor');
 </code></pre>
 
-<p>Monitor a single PID or mulitple PIDs:</p>
+<p>Monitor a single PID or multiple PIDs:</p>
 
 <pre><code>// Single PID
 var single = procmon.monitor({ pid: 1, interval: 5000 }).start();
@@ -33,30 +33,57 @@ var single = procmon.monitor({ pid: 1, interval: 5000 }).start();
 var multi = procmon.monitor({ pid: [1, 2, 3] }).start();
 </code></pre>
 
-<p>Handle the <code>stats</code> response - a response will emitted for each of the specified PIDs and includes the PID:</p>
+<p>Handle the <code>stats</code> response - an event will be emitted for each of the specified PIDs and includes the PID:</p>
 
 <pre><code>single.on('stats', function(stats) {
-  console.dir(stats); // Outputs: { pid: 1, cpu: '0.0', mem: '2248' }
+  console.dir(stats); // Outputs: { pid: 1, cpu: '0.0', mem: '2248', out: '' }
 })
 </code></pre>
 
-<p><em>Note: if a PID is not found, the resulting cpu and mem properties will be an empty string.</em></p>
+<p><em>Note: if a PID is not found, the resulting cpu and mem properties will be 0.0 and 0 respectively.</em></p>
 
 <h2>Documentation</h2>
 
-<p>Generated code documentation is available in the docs directory. This documentation is generated using
+<p>Generated code documentation is available <a href="http://eventargs.com/docs/process-monitor/">here</a> and in the docs directory. This documentation is generated using
 <code>docco-husky</code> - to regenerate the documentation, run <code>$ docco-husky lib/*</code>.</p>
 
 <p>Currently the <code>monitor</code> function accepts the following configuration options:</p>
 
-<ul>
-<li><code>pid</code> - Either a PID number or an array of PID numbers</li>
-<li><code>interval</code> - Rate in milliseconds at which the processes are checked and the stats event is emitted (defaults to 1000 ms)</li>
-</ul>
+<h3>pid</h3>
+
+<p>The <code>pid</code> option may be a single process ID or an array from process IDs to monitor. The PID is also included in the <code>stats</code> object on when the <code>stats</code> event is emitted.</p>
+
+<pre><code>procmon.monitor({ pid: 1}).start();
+procmon.monitor({ pid: [1, 2, 3] }).start();
+</code></pre>
+
+<h3>interval</h3>
+
+<p>The rate in milliseconds at which the processes are checked and the stats event is emitted. The rate defaults to 1000 miliseconds.</p>
+
+<pre><code>procmon.monitor({ pid: 1, interval: 5000 }).start();
+</code></pre>
+
+<h3>format</h3>
+
+<p>Specify a format string that will be updated in the <code>stats</code> object on update. Use <code>{pid}</code>, <code>{cpu}</code>, and <code>{mem}</code> to output a friendly message on update.</p>
+
+<pre><code>procmon.monitor({
+  pid: [1, 2],
+  interval: 5000,
+  format: 'PID {pid} - {cpu}% CPU - {mem} memory'
+}).start();
+
+procmon.on('stats', function(stats) {
+  console.log(stats.out);
+});
+</code></pre>
 
 <h2>Release History</h2>
 
 <ul>
+<li>2012/09/28 - v0.2.0 - Added <code>format</code> to the configuration object which accepts a format for the output (the <code>out</code> property of the <code>stats</code> object). Uses <a href="https://npmjs.org/package/stringformat">stringformat</a> which allows the use of <code>{cpu}</code>, <code>{mem}</code>, and <code>{pid}</code> in the format string.</li>
+<li>2012/09/24 - v0.1.1 - Documentation update for publishing to npm.</li>
 <li>2012/09/14 - v0.1.0 - Initial release.</li>
 </ul>
 
