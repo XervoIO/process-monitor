@@ -1,7 +1,7 @@
 {
   "name": "process-monitor",
   "description": "Monitors the CPU and memory usage for a PID or collection of PIDs.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/onmodulus/process-monitor",
   "author": "Modulus <support@modulus.io>",
   "contributors": [
