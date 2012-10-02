@@ -1,7 +1,7 @@
 {
   "name": "process-monitor",
   "description": "Monitors the CPU and memory usage for a PID or collection of PIDs.",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "homepage": "https://github.com/onmodulus/process-monitor",
   "author": "Modulus <support@modulus.io>",
   "contributors": [
@@ -35,13 +35,19 @@
     "test": "grunt travis --verbose"
   },
   "dependencies": {
-    "string" : "0.2.x"
+    "string" : "0.2.x",
+    "stringformat": "0.0.5"
   },
   "devDependencies": {
     "grunt": "~0.3.15",
     "docco-husky": "~0.3.3"
   },
-  "keywords": [],
+  "keywords": [
+    "process",
+    "monitor",
+    "pid",
+    "ps"
+  ],
   "docco_husky": {
     "output_dir": "docs",
     "project_name": "Process-Monitor",
