@@ -63,7 +63,20 @@ Specify a format string that will be updated in the `stats` object on update. Us
       console.log(stats.out);
     });
 
+### technique
+There are two supported techniques for reading process information.
+
+    procmon.monitor({
+      pid: 1,
+      interval: 5000,
+      technique: 'ps'
+    }).start();
+
+* `ps` (default): Uses the `ps` command to find CPU and memory usage. CPU value returned from the `ps` command is a lifetime average and does not reflect the current usage.
+* `proc`: Uses information stored in the /proc files to calculate current CPU usage. Implementation comes from the [node-usage](https://npmjs.org/package/usage) module. Only supported on Linux.
+
 ## Release History
+* 2013/04/23 - v0.3.0 - Added support for current CPU usage. Uses [node-usage](https://npmjs.org/package/usage) module.
 * 2012/09/28 - v0.2.0 - Added `format` to the configuration object which accepts a format for the output (the `out` property of the `stats` object). Uses [stringformat](https://npmjs.org/package/stringformat) which allows the use of `{cpu}`, `{mem}`, and `{pid}` in the format string.
 * 2012/09/24 - v0.1.1 - Documentation update for publishing to npm.
 * 2012/09/14 - v0.1.0 - Initial release.
