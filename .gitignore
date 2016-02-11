@@ -1,5 +1,6 @@
 # Node modules
 node_modules
+.idea
 
 # Mac files
 .DS_Store
