@@ -32,26 +32,22 @@
     "node": ">= 0.6.0"
   },
   "scripts": {
-    "test": "grunt travis --verbose"
+    "test": "lab"
   },
   "dependencies": {
-    "string": "0.2.x",
+    "string": "3.3.1",
     "stringformat": "0.0.5",
-    "usage": "0.3.x"
+    "usage": "0.7.1"
   },
   "devDependencies": {
-    "grunt": "~0.3.15",
-    "docco-husky": "~0.3.3"
+    "@modulus/standard": "0.4.0",
+    "code": "2.1.0",
+    "lab": "8.2.0"
   },
   "keywords": [
     "process",
     "monitor",
     "pid",
     "ps"
-  ],
-  "docco_husky": {
-    "output_dir": "docs",
-    "project_name": "Process-Monitor",
-    "show_timestamp": false
-  }
+  ]
 }
