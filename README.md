@@ -1,6 +1,6 @@
 # process-monitor
 
-[![Build Status](https://secure.travis-ci.org/fiveisprime/process-monitor.png)](http://travis-ci.org/fiveisprime/process-monitor)
+[![Build Status](https://secure.travis-ci.org/onmodulus/process-monitor.png)](http://travis-ci.org/onmodulus/process-monitor)
 
 Monitors the CPU and memory usage for a PID or collection of PIDs asynchronously and emits an event with a stats object which includes information about the specified PID. Allows a user-specified format string for creating a friendly status message.
 
