@@ -40,7 +40,7 @@
     "usage": "0.3.x"
   },
   "devDependencies": {
-    "grunt": "~0.3.15",
+    "grunt": "~1.0.1",
     "docco-husky": "~0.3.3"
   },
   "keywords": [
