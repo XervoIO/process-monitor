@@ -1,12 +1,8 @@
-module.exports = function(grunt) {
-
+module.exports = function (grunt) {
   grunt.initConfig({
     pkg: '<json:package.json>',
     test: {
       files: ['test/**/*.js']
-    },
-    lint: {
-      files: ['grunt.js', 'lib/**/*.js', 'test/**/*.js']
     },
     watch: {
       files: '<config:lint.files>',
@@ -33,7 +29,5 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', 'lint test');
-  grunt.registerTask('travis', 'lint test');
-
+  grunt.registerTask('default', 'test');
 };

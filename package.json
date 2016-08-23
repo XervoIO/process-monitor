@@ -29,10 +29,12 @@
   ],
   "main": "./lib/process-monitor",
   "engines": {
-    "node": ">= 0.6.0"
+    "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "grunt travis --verbose"
+    "test": "grunt --verbose",
+    "lint": "mod-standard",
+    "pretest": "npm run lint"
   },
   "dependencies": {
     "string": "0.2.x",
@@ -40,8 +42,9 @@
     "usage": "0.3.x"
   },
   "devDependencies": {
-    "grunt": "~0.3.15",
-    "docco-husky": "~0.3.3"
+    "@modulus/standard": "1.0.0",
+    "docco-husky": "~0.3.3",
+    "grunt": "~0.3.15"
   },
   "keywords": [
     "process",

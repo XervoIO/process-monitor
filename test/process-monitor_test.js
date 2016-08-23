@@ -1,4 +1,4 @@
-var procmon = require('../lib/process-monitor.js');
+var Procmon = require('../lib/process-monitor.js');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -21,23 +21,32 @@ var procmon = require('../lib/process-monitor.js');
 */
 
 exports['process-monitor'] = {
-  setUp: function(done) {
+  setUp: function (done) {
     done();
   },
-  'initialization': function(test) {
-    test.expect(3);
+  'initialization': function (test) {
+    const SUITE_TESTS = 3;
+    test.expect(SUITE_TESTS);
 
-    test.ok(procmon.monitor({ pid: 1 }), 'should initialize with a single PID.');
-    test.ok(procmon.monitor({ pid: [ 1, 2 ] }), 'should initialize with an array of PIDs.');
-    test.throws(function() {
-      procmon.monitor();
+    test.ok(
+      Procmon.monitor({ pid: 1 }),
+      'should initialize with a single PID.');
+
+    test.ok(
+      Procmon.monitor({ pid: [1, 2] }),
+      'should initialize with an array of PIDs.');
+
+    test.throws(function () {
+      Procmon.monitor();
     }, TypeError, 'should throw type error with no initialization object');
 
     test.done();
   },
-  'starting and stopping': function(test) {
+  'starting and stopping': function (test) {
+    var testMon;
+
     test.expect(2);
-    var testMon = procmon.monitor({ pid: 1 });
+    testMon = Procmon.monitor({ pid: 1 });
 
     testMon.start();
     test.strictEqual(testMon.isRunning, true, 'should start.');
@@ -46,11 +55,16 @@ exports['process-monitor'] = {
 
     test.done();
   },
-  'stats event': function(test) {
-    var testMon = procmon.monitor({ pid: process.pid, interval: 10, format: '{cpu}% CPU - {mem} MEM' }).start();
+  'stats event': function (test) {
+    var testMon = Procmon.monitor({
+      pid: process.pid,
+      interval: 10,
+      format: '{cpu}% CPU - {mem} MEM'
+    }).start();
 
-    testMon.on('stats', function(stats) {
-      test.expect(4);
+    testMon.on('stats', function (stats) {
+      const SUITE_TESTS = 4;
+      test.expect(SUITE_TESTS);
 
       test.ok(stats, 'stats event should be called and provide stats object');
       test.ok(stats.cpu, 'stats object should have cpu property');
