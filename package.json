@@ -35,7 +35,7 @@
     "test": "grunt travis --verbose"
   },
   "dependencies": {
-    "string": "3.3.1",
+    "string": "3.3.3",
     "stringformat": "0.0.5",
     "usage": "0.7.1"
   },
